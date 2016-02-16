@@ -1,10 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "894a0a994f6b64409754735f68f5b71d",
+    "hash": "fabfea3cdeb62b9068284df679fa6aaf",
+    "content-hash": "30621fc1ec8013714807cb25e6a9f86f",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -118,6 +119,162 @@
                 "package"
             ],
             "time": "2015-04-14 21:18:51"
+        },
+        {
+            "name": "ebizmarts/magento2-abandonedcart",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ebizmarts/magento2-abandonedcart.git",
+                "reference": "b56c691bf1eb0a0b574e47702ea4424294d71de6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ebizmarts/magento2-abandonedcart/zipball/b56c691bf1eb0a0b574e47702ea4424294d71de6",
+                "reference": "b56c691bf1eb0a0b574e47702ea4424294d71de6",
+                "shasum": ""
+            },
+            "require": {
+                "ebizmarts/magento2-mandrill": "3.0.*",
+                "mandrill/mandrill": "1.0.*"
+            },
+            "type": "magento2-module",
+            "extra": {
+                "map": [
+                    [
+                        "*",
+                        "Ebizmarts/AbandonedCart"
+                    ]
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ebizmarts Corp",
+                    "email": "info@ebizmarts.com",
+                    "homepage": "http://ebizmarts.com"
+                }
+            ],
+            "description": "Send abandoned cart emails",
+            "time": "2015-11-20 04:45:17"
+        },
+        {
+            "name": "ebizmarts/magento2-autoresponder",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ebizmarts/magento2-autoresponder.git",
+                "reference": "45320b563d8bd703d1c2b0312ee02e1527cb3a9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ebizmarts/magento2-autoresponder/zipball/45320b563d8bd703d1c2b0312ee02e1527cb3a9b",
+                "reference": "45320b563d8bd703d1c2b0312ee02e1527cb3a9b",
+                "shasum": ""
+            },
+            "require": {
+                "ebizmarts/magento2-mandrill": "3.0.*",
+                "mandrill/mandrill": "1.0.*"
+            },
+            "type": "magento2-module",
+            "extra": {
+                "map": [
+                    [
+                        "*",
+                        "Ebizmarts/AutoResponder"
+                    ]
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ebizmarts Corp",
+                    "email": "info@ebizmarts.com",
+                    "homepage": "http://ebizmarts.com"
+                }
+            ],
+            "description": "Send autoresponders emails",
+            "time": "2015-11-20 04:53:36"
+        },
+        {
+            "name": "ebizmarts/magento2-magemonkey",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ebizmarts/magento2-magemonkey.git",
+                "reference": "fd0703446640362b776f56d7c1be86918ee6b363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ebizmarts/magento2-magemonkey/zipball/fd0703446640362b776f56d7c1be86918ee6b363",
+                "reference": "fd0703446640362b776f56d7c1be86918ee6b363",
+                "shasum": ""
+            },
+            "type": "magento2-module",
+            "extra": {
+                "map": [
+                    [
+                        "*",
+                        "Ebizmarts/MageMonkey"
+                    ]
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "description": "Connect Mailchimp with Magento",
+            "time": "2015-12-18 18:04:32"
+        },
+        {
+            "name": "ebizmarts/magento2-mandrill",
+            "version": "3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ebizmarts/magento2-mandrill.git",
+                "reference": "ca7897cae4cd142c37f14d3ef09e31cec8c07a3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ebizmarts/magento2-mandrill/zipball/ca7897cae4cd142c37f14d3ef09e31cec8c07a3c",
+                "reference": "ca7897cae4cd142c37f14d3ef09e31cec8c07a3c",
+                "shasum": ""
+            },
+            "require": {
+                "mandrill/mandrill": "1.0.*"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "psr-4": {
+                    "Ebizmarts\\Mandrill\\": ""
+                },
+                "files": [
+                    "registration.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Ebizmarts Corp",
+                    "email": "info@ebizmarts.com",
+                    "homepage": "http://ebizmarts.com"
+                }
+            ],
+            "description": "Connect Mandrill with Magento",
+            "time": "2016-02-09 16:20:03"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -4854,6 +5011,49 @@
             "time": "2015-10-29 14:34:55"
         },
         {
+            "name": "mandrill/mandrill",
+            "version": "1.0.55",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php.git",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
+                "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mandrill": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mandrill Devs",
+                    "email": "community@mandrill.com",
+                    "homepage": "http://mandrill.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "API client library for the Mandrill email as a service platform",
+            "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
+            "keywords": [
+                "api",
+                "email"
+            ],
+            "time": "2015-09-22 13:58:03"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.16.0",
             "source": {
@@ -8341,16 +8541,16 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v3.0.1",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "6aeac8907e3e1340a0033b0a9ec075f8e6524800"
+                "reference": "4a204804952ff267ace88cf499e0b4bb302a475e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/6aeac8907e3e1340a0033b0a9ec075f8e6524800",
-                "reference": "6aeac8907e3e1340a0033b0a9ec075f8e6524800",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/4a204804952ff267ace88cf499e0b4bb302a475e",
+                "reference": "4a204804952ff267ace88cf499e0b4bb302a475e",
                 "shasum": ""
             },
             "require": {
@@ -8386,7 +8586,7 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2015-10-30 23:35:59"
+            "time": "2016-01-03 15:35:16"
         },
         {
             "name": "symfony/yaml",
