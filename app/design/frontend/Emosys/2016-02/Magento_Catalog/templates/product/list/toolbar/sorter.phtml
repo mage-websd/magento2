@@ -1,0 +1,62 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+use Magento\Catalog\Model\Product\ProductList\Toolbar;
+$paramsCurrent =    array();
+$params = $this->getRequest()->getParams();
+$arraySort = array('position'=>'','price'=>'','name'=>'');
+foreach($block->getAvailableOrders() as $_key => $_order) {
+    $arraySort[$_key] = $_order;
+}
+?>
+<div class="toolbar-sorter sorter">
+    <?php foreach ($arraySort as $_key => $_order): ?>
+        <?php 
+            if ($block->isOrderCurrent($_key) && $block->getCurrentDirection() == 'desc') {
+                $paramChange = array(
+                    Toolbar::ORDER_PARAM_NAME =>$_key,
+                    Toolbar::DIRECTION_PARAM_NAME => 'asc',
+                );
+            }
+            else {
+                $paramChange = array(
+                    Toolbar::ORDER_PARAM_NAME =>$_key,
+                    Toolbar::DIRECTION_PARAM_NAME => 'desc',
+                );
+            }
+            $urlChange = $block->getPagerUrl(array_merge($params,$paramChange));
+            switch($_key) {
+                case 'position':
+                    $_order = 'Choose Category';
+                    break;
+                case 'price':
+                    $_order = 'Price Range';
+                    break;
+                default:
+                    break;
+            }
+        ?>
+        <a href="<?php echo $urlChange; ?>" value="<?php echo $_key; ?>" class="link-soter">
+            <span><?php echo $block->escapeHtml(__($_order)) ?></span>
+            <?php if ($block->isOrderCurrent($_key) && $block->getCurrentDirection() == 'desc'): ?>
+                <span class="action sorter-action sort-desc"><?php echo __('Set Ascending Direction') ?></span>
+             <?php else: ?>
+                <span class="action sorter-action sort-asc"><?php  echo __('Set Descending Direction') ?></span>
+            <?php endif; ?>
+        </a>
+    <?php endforeach; ?>
+
+</div>
+

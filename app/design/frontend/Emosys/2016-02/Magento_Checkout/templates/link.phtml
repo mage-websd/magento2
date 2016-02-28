@@ -1,0 +1,13 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var $block \Magento\Checkout\Block\Link */
+?>
+<li class="link checkout">
+    <a <?php /* @escapeNotVerified */ echo $block->getLinkAttributes() ?>><?php echo __('Checkout'); ?></a>
+</li>

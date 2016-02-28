@@ -1,0 +1,157 @@
+<?php
+/**
+ * @var $block Magento\Catalog\Product\View
+ */
+?>
+<?php
+$_product = $block->getProduct();
+$_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$_category = $_objectManager->get('Magento\Framework\Registry')->registry('current_category');
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+?>
+<div class="product-add-form">
+    <?php if ($_category): ?>
+        <p class="product-category product-box"><?php echo $_category->getName(); ?></p>
+    <?php endif; ?>
+    <div class="product-main-title">
+        <h1 class="product-name"><?php echo $_product->getName(); ?></h1>
+        <p class="product-sku"><?php echo $_helper->productAttribute($_product, $_product->getSku(), 'sku'); ?></p>
+    </div>
+
+    <?php if ($_productContry = $_product->getData('country_of_manufacture')): ?>
+        <p class="product-country product-box">
+            <label><?php echo $_product->getResource()->getAttribute('country_of_manufacture')->getFrontendLabel(); ?> : </label>
+            <span><?php
+                $_contryObject = $_objectManager->get('Magento\Directory\Model\Country')->loadByCode($_productContry);
+                echo $_contryObject->getName();
+                ?></span>
+        </p>
+    <?php endif; ?>
+
+    <?php if ($_productWeight = $_product->getData('weight')): ?>
+        <p class="product-weight product-box"><?php
+            echo floatval($_productWeight) . ' ' . __('grams');
+            ?></p>
+    <?php endif; ?>
+    <div class="product-price-wrapper product-box">
+        <?php echo $block->getChildHtml('product.price.final'); ?>
+        <?php echo $block->getChildHtml('product.price.tier'); ?>
+    </div>
+    <div class="product-review product-box">
+        <?php echo $block->getReviewsSummaryHtml($block->getProduct(), false, true) ?>
+    </div>
+
+    <div class="product-short-description product-box">
+        <?php echo $_helper->productAttribute($_product, $_product->getData('short_description'), 'short_description'); ?></p>
+    </div>
+
+    <div class="product-actions-main product-box">
+        <form action="<?php /* @escapeNotVerified */ echo $block->getSubmitUrl($_product) ?>" method="post"
+              id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $_product->getId() ?>" />
+            <input type="hidden" name="selected_configurable_option" value="" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+            <?php echo $block->getBlockHtml('formkey') ?>
+            <?php echo $block->getChildHtml('form_top'); ?>
+            <?php if ($_product->isSaleable() && $block->getOptionsContainer() == 'container1'): ?>
+                <?php echo $block->getChildChildHtml('options_container') ?>
+            <?php endif; ?>
+            <?php if ($_product->isSaleable() && $block->hasOptions() && $block->getOptionsContainer() == 'container2'): ?>
+                <?php echo $block->getChildChildHtml('options_container') ?>
+            <?php endif; ?>
+
+            <?php echo $block->getChildHtml('addtocart'); ?>
+            <?php echo $block->getChildHtml('addto'); ?>
+        </form>
+    </div>
+
+    <?php if ($_product->isAvailable()): ?>
+        <div class="stock available product-box" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+            <label><?php echo __('Availability'); ?></label> :
+            <span><?php /* @escapeNotVerified */ echo __('In stock') ?></span>
+        </div>
+    <?php else: ?>
+        <div class="stock unavailable product-box" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+            <label><?php echo __('Availability'); ?></label> :
+            <span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span>
+        </div>
+    <?php endif; ?>
+
+    <div class="product-collapse product-box" data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": false, "multipleCollapsible": false}}'>
+        <?php if ($_productDataCollapse = $_product->getData('description')): ?>
+            <div data-role="collapsible">
+                <span><?php echo __('Package Details'); ?></span>
+            </div>
+            <div data-role="content"><?php echo $_helper->productAttribute($_product, $_productDataCollapse, 'description'); ?></div>
+        <?php endif; ?>
+
+        <?php if ($_productDataCollapse = $_product->getData('delivery_returns')): ?>
+            <div data-role="collapsible">
+                <span><?php echo __('Delivery & Returns'); ?></span>
+            </div>
+            <div data-role="content"><?php echo $_helper->productAttribute($_product, $_productDataCollapse, 'delivery_returns'); ?></div>
+        <?php endif; ?>
+
+        <?php if ($_productDataCollapse = $_product->getData('ingredients')): ?>
+            <div data-role="collapsible">
+                <span><?php echo __('Product Ingredients'); ?></span>
+            </div>
+            <div data-role="content"><?php echo $_helper->productAttribute($_product, $_productDataCollapse, 'ingredients'); ?></div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<div class="product-more-right">
+<?php echo $block->getChildHtml('product.info.upsell'); ?>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Catalog/js/price-box'
+    ], function ($) {
+        var priceBoxes = $('[data-role=priceBox]');
+
+        priceBoxes = priceBoxes.filter(function (index, elem) {
+            return !$(elem).find('.price-from').length;
+        });
+
+        priceBoxes.priceBox({'priceConfig': <?php /* @escapeNotVerified */ echo $block->getJsonConfig() ?>});
+    });
+
+    require([
+        'jquery'
+    ], function ($) {
+        $(document).on('click', '.btn-qty-number', function (event) {
+            event.preventDefault();
+            var domQty = $(this).siblings('.qty');
+            var valueQty = domQty.val();
+            if (isNaN(valueQty)) {
+                valueQty = 1;
+            }
+            if ($(this).hasClass('btn-minus')) {
+                if (valueQty < 2) {
+                    $(this).addClass('disable');
+                    $(this).attr('disable');
+                    domQty.val(valueQty);
+                    return false;
+                }
+                valueQty--;
+                domQty.val(valueQty);
+                if (valueQty < 2) {
+                    $(this).addClass('disable');
+                    $(this).attr('disable');
+                    return false;
+                }
+            } else {
+                valueQty++;
+                domQty.val(valueQty);
+                if (valueQty > 1) {
+                    $(this).siblings('.btn-minus').removeClass('disable');
+                    $(this).siblings('.btn-minus').removeAttr('disable');
+                    return false;
+                }
+            }
+        });
+    });
+</script>

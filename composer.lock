@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fabfea3cdeb62b9068284df679fa6aaf",
-    "content-hash": "30621fc1ec8013714807cb25e6a9f86f",
+    "hash": "23c769aadf9cce601bd929dc3930cc85",
+    "content-hash": "6bbbf3e7042ff6e75cd8aaa95d5cc92d",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -122,16 +122,16 @@
         },
         {
             "name": "ebizmarts/magento2-abandonedcart",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ebizmarts/magento2-abandonedcart.git",
-                "reference": "b56c691bf1eb0a0b574e47702ea4424294d71de6"
+                "reference": "64b40df7eaccb52e9c5f41ca4f1564797751ff11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ebizmarts/magento2-abandonedcart/zipball/b56c691bf1eb0a0b574e47702ea4424294d71de6",
-                "reference": "b56c691bf1eb0a0b574e47702ea4424294d71de6",
+                "url": "https://api.github.com/repos/ebizmarts/magento2-abandonedcart/zipball/64b40df7eaccb52e9c5f41ca4f1564797751ff11",
+                "reference": "64b40df7eaccb52e9c5f41ca4f1564797751ff11",
                 "shasum": ""
             },
             "require": {
@@ -139,12 +139,12 @@
                 "mandrill/mandrill": "1.0.*"
             },
             "type": "magento2-module",
-            "extra": {
-                "map": [
-                    [
-                        "*",
-                        "Ebizmarts/AbandonedCart"
-                    ]
+            "autoload": {
+                "psr-4": {
+                    "Ebizmarts\\AbandonedCart\\": ""
+                },
+                "files": [
+                    "registration.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -160,7 +160,7 @@
                 }
             ],
             "description": "Send abandoned cart emails",
-            "time": "2015-11-20 04:45:17"
+            "time": "2016-02-17 14:05:04"
         },
         {
             "name": "ebizmarts/magento2-autoresponder",
@@ -237,16 +237,16 @@
         },
         {
             "name": "ebizmarts/magento2-mandrill",
-            "version": "3.0.2",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ebizmarts/magento2-mandrill.git",
-                "reference": "ca7897cae4cd142c37f14d3ef09e31cec8c07a3c"
+                "reference": "fa2a142202f37bb072c2075f3ca7df801e2a26cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ebizmarts/magento2-mandrill/zipball/ca7897cae4cd142c37f14d3ef09e31cec8c07a3c",
-                "reference": "ca7897cae4cd142c37f14d3ef09e31cec8c07a3c",
+                "url": "https://api.github.com/repos/ebizmarts/magento2-mandrill/zipball/fa2a142202f37bb072c2075f3ca7df801e2a26cd",
+                "reference": "fa2a142202f37bb072c2075f3ca7df801e2a26cd",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +274,7 @@
                 }
             ],
             "description": "Connect Mandrill with Magento",
-            "time": "2016-02-09 16:20:03"
+            "time": "2016-02-17 13:37:13"
         },
         {
             "name": "justinrainbow/json-schema",
