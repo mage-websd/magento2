@@ -9,6 +9,7 @@ $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $_category = $_objectManager->get('Magento\Framework\Registry')->registry('current_category');
 $_helper = $this->helper('Magento\Catalog\Helper\Output');
 ?>
+<div class="clear"></div>
 <div class="product-add-form">
     <?php if ($_category): ?>
         <p class="product-category product-box"><?php echo $_category->getName(); ?></p>
@@ -38,7 +39,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
         <?php echo $block->getChildHtml('product.price.tier'); ?>
     </div>
     <div class="product-review product-box">
-        <?php echo $block->getReviewsSummaryHtml($block->getProduct(), false, true) ?>
+        <?php echo $block->getReviewsSummaryHtml($_product, false, true) ?>
     </div>
 
     <div class="product-short-description product-box">
@@ -100,9 +101,10 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
         <?php endif; ?>
     </div>
 </div>
-
+<div class="clear"></div>
 <div class="product-more-right">
-<?php echo $block->getChildHtml('product.info.upsell'); ?>
+    <?php echo $block->getChildHtml('catalog.compare.sidebar.view'); ?>
+    <?php echo $block->getChildHtml('product.info.upsell'); ?>
 </div>
 
 <script>
