@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Ihor Vansach (ihor@magefan.com). All rights reserved.
+ * See LICENSE.txt for license details (http://opensource.org/licenses/osl-3.0.php).
+ *
+ * Glory to Ukraine! Glory to the heroes!
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Emosys_Slidere::slidere" title="Slider" module="Emosys_Slidere" parent="Magento_Backend::content" sortOrder="20"  resource="Emosys_Slidere::slidere"/>
+
+        <add id="Emosys_Slidere::manager" title="Manager Slider" module="Emosys_Slidere" parent="Emosys_Slidere::slidere" sortOrder="10" action="blog/post/" resource="Emosys_Slidere::manager"/>
+    </menu>
+</config>
